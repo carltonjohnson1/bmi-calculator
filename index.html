@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg" href="images/favicon.svg" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+    <title>Body Mass Index Calculator by Carlton Johnson</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div class="padding-wrapper">
+      <main>
+        <article>
+          <header class="center">
+            <h1>
+              Discover Your Body<br />
+              Mass Index
+            </h1>
+            <p>
+              The BMI calculator is a helpful tool to gauge whether your weight
+              falls within a healthy range for your height. It's not about
+              perfection. It's about awareness. Use the calculator below to take
+              a moment to check in with your body.
+            </p>
+          </header>
+          <section class="bmi-section">
+            <div class="bmi-card">
+              <h
+              2>Enter your details</h2>
+
+              <div class="units">
+                <p class="min-w bottom">Units</p>
+                <span class="metric-span">
+                  <input
+                    type="radio"
+                    id="metric"
+                    name="chooseUnit"
+                    value="metric"
+                    checked
+                    onclick="revealMetric(); removeImperial();"
+                  />
+                  <label for="metric">Metric</label>
+                </span>
+                <span class="imperial-span bottom">
+                  <input
+                    type="radio"
+                    id="imperial"
+                    name="chooseUnit"
+                    value="imperial"
+                    onclick="removeMetric(); revealImperial()"
+                  />
+                  <label for="imperial">Imperial</label>
+                </span>
+              </div>
+
+              <!-- Metric height and weight start -->
+
+              <!-- height metric -->
+              <div class="height-metric" id="heightMetric">
+                <p class="min-w">Height</p>
+                <input
+                  type="number"
+                  placeholder="Centimetres"
+                  class="number"
+                  id="metricHeightInput"
+                />
+              </div>
+
+              <!-- weight metric -->
+              <div class="weight-metric bottom" id="weightMetric">
+                <p class="min-w">Weight</p>
+                <input
+                  type="number"
+                  placeholder="Kilograms"
+                  class="number"
+                  id="metricWeightInput"
+                />
+              </div>
+
+              <!-- Metric height and weight finish -->
+
+              <!-- Imperial height and weight start -->
+
+              <!-- height metric -->
+              <div class="height-imperial" id="heightImperial">
+                <p class="min-w">Height</p>
+
+                <span class="imperial-inches"
+                  ><input
+                    type="number"
+                    placeholder="Inches"
+                    class="number"
+                    id="imperialInchesInput"
+                /></span>
+              </div>
+              <!-- weight metric -->
+              <div class="weight-imperial bottom" id="weightImperial">
+                <p class="min-w">Weight</p>
+
+                <span class="imperial-pounds"
+                  ><input
+                    type="number"
+                    placeholder="Pounds"
+                    class="number"
+                    id="imperialPoundsInput"
+                /></span>
+              </div>
+
+              <!-- Imperial height and weight Finish -->
+
+              <div class="calc top">
+                <button class="reset" onclick="reload()">Reset</button>
+                <button
+                  onclick="metricDoCalculations(); weightRanges()"
+                  class="metric-calc-btn"
+                  id="metricCalcBtn"
+                >
+                  Calculate
+                </button>
+                <button
+                  onclick="imperialDoCalculations(); weightRanges()"
+                  class="imperial-do-calc-btn"
+                  id="imperialCalcBtn"
+                >
+                  Calculate
+                </button>
+              </div>
+              <div class="result">
+                <h2>Result:</h2>
+                <!-- metric guide -->
+                <h3 id="metricGuideHeading" class="large-h3"></h3>
+                <!-- <p id="metricBmiResult"></p> -->
+                <p id="metricBmiResultmessage" class="large-p"></p>
+
+                <!-- imperial guide -->
+                <h3 id="imperialGuideHeading" class="large-h3"></h3>
+                <!-- <p id="ImperialBmiResult"></p> -->
+                <p id="imperialBmiResultmessage" class="large-p"></p>
+                <div class="weight-ranges" id="weightRanges">
+                  <h3>Resources:</h3>
+               <p>BMI is not the whole picture of your health. If you have any concerns you should review the information with a medical professional. See the <a href="#resourcesSection">resources section</a> for useful links and information. </p>
+
+                </div>
+
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="results-meaning">
+              <div class="meaning-img">
+                <picture class="default">
+                  <img
+                    src="images/three-adults-smiling-while-walking.jpg"
+                    alt="Three adults smiling in the outdoors off to do a fitness activity"
+                  />
+                </picture>
+                <picture class="okay-bmi">
+                  <img
+                    src="images/happy-man-doing-two-thumbs-up.jpg"
+                    alt="man with a beard smiling widely giving two thumbs up"
+                    id="healthBmiImage"
+                  />
+                </picture>
+                <picture class="low-bmi">
+                  <img
+                    src="images/woman-looking-into-camera-in-a-park.jpg"
+                    alt="woman looking into the camera with hands on head with neutral expression, in a park"
+                  />
+                </picture>
+                <picture class="high-bmi">
+                  <img
+                    src="images/woman-looking-confused.jpg"
+                    alt="woman standing in the high street looking directly at the camer looking confused"
+                  />
+                </picture>
+              </div>
+              <div class="meaning-text">
+                <h2>Understanding Your BMI Score</h2>
+                <p>Your Body Mass Index (BMI) is a numerical value derived from your weight and height, providing an estimate of your body fat. It's a widely used tool to categorize weight status and assess potential health risks.</p>
+                <p>For most adults, BMI categories are as follows:</p>
+                     <ul>
+                    <li>Below 18.5 = Underweight</li>
+                    <li>Between 18.5 - 24.9 = Healthy Weight</li>
+                    <li>Between 25 - 29.9 = Overweight</li>
+                    <li>Over 30 = Obese</li>
+                  </ul>
+                  <p>These categories help identify potential health concerns. For instance, a higher BMI can increase the risk of conditions like type 2 diabetes and heart disease. Conversely, being underweight may indicate nutritional deficiencies or other health issues. It's important to note that BMI is a general guide and doesn't account for all individual differences.</p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="limitations">
+              <h2>Why BMI Isn't the Whole Picture</h2>
+              <p>While BMI is a useful screening tool, it has limitations. It doesn't differentiate between weight from fat and muscle. Therefore, individuals with high muscle mass, like athletes, may have a high BMI but low body fat. Additionally, BMI doesn't consider factors such as age, sex, ethnicity, or body composition.</p>
+              <p>BMI is also not suitable for everyone. It's not applicable to children, pregnant women, or those with certain health conditions. For a more comprehensive assessment of health, other measurements like waist circumference or waist-to-height ratio can provide additional insights into body fat distribution and associated health risks.</p>
+            </div>
+          </section>
+
+          <!-- Resources Section -->
+          <section class="resources-section" id="resourcesSection">
+            <div>
+              <h2>Further Reading & Trusted Resources</h2>
+              <p>If you’d like to dive deeper into understanding BMI, how it's used in healthcare, or explore additional tools, the following trusted resources provide expert information. These sites offer a range of calculators, health advice, and guidance used by medical professionals and the public alike.</p>
+            </div>
+
+            <div class="resources">
+              <div class="resource-patient-info">
+                <div class="resource-text">
+                  <h3>Patient.info BMI Calculator</h3>
+                  <p>A detailed tool and explanation designed for healthcare professionals, offering insights into how BMI is calculated and applied in clinical settings.</p>
+                  <p>👉 <a href="https://patient.info/doctor/bmi-calculator" target="_blank">Visit Patient.info BMI Calculator</a></p>
+                </div>
+              </div>
+              <div class="resource-bhf">
+                <div class="resource-text">
+                  <h3>British Heart Foundation BMI Tool</h3>
+                  <p>An easy-to-use calculator from the BHF that helps you understand your BMI and its implications for heart health.</p>
+                  <p>👉 <a href="https://extras.bhf.org.uk/patientinfo/bmi-v1.01/app/index.html" target="_blank">Use the BHF BMI Tool</a></p>
+                </div>
+              </div>
+              <div class="resource-nhs">
+                <div class="resource-text">
+                  <h3>NHS BMI Assessment Tool</h3>
+                  <p>Official UK health guidance from the NHS, including BMI calculators and additional health assessments tailored for adults.</p>
+                  <p>👉 <a href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults" target="_blank">Check Your BMI with the NHS</a></p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

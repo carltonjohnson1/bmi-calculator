@@ -1,0 +1,595 @@
+/* reference
+https://patient.info/doctor/bmi-calculator
+*/
+
+:root {
+    --textColor: #112A46;
+    --cardBg: #E9F9EE;
+    --btnColor: #FBB6CE;
+    --btnColorHover:#fbb6cebb;
+    --btnColorHoverWhite:#FFFFFF;
+    --white: #ffffff;
+    --placeHolder: #6F7DB5;
+    --border: #D6D6D6;
+    --transaparent: #FFFFFF00;
+    --inputBg: #DEEAF7;
+    --bodyBg: #EFF5FB;
+    --resultsBg: #333D3D;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 100%;
+    font-family: "Poppins", sans-serif;
+    color: var(--textColor);
+    background: var(--bodyBg);
+    
+    
+}
+
+ul {
+    margin-left: 20px;
+    font-size: 1.25rem;
+
+    li {
+        padding: 0.5rem 0;
+    }
+
+}
+
+div.padding-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+img {
+    border-radius: 1rem;
+    width: 100%;
+    height: auto;
+}
+
+header {
+    margin-top: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+ 
+}
+
+/* BMI Card Section Start */
+.bmi-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bmi-card{
+    width: 600px;
+    background-color: var(--cardBg);
+    border-radius: 1rem;
+    padding: 3rem 4rem;
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+.min-w {
+       font-weight: 600;  
+       width: 100px;
+       font-size: 1.25rem;
+    }
+
+.units {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    
+}
+
+.height-metric {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+
+}
+
+
+
+#heightImperial {
+    display: none;
+
+}
+
+#weightImperial {
+    display: none;
+
+}
+
+.imperial-feet {
+    flex: 1;
+}
+
+.imperial-inches {
+    flex: 1;
+
+}
+
+.imperial-stone {
+    flex: 1;
+}
+
+.imperial-pounds {
+    flex: 1;
+}
+
+.weight-metric {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  
+}
+
+.height-imperial {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+
+}
+.weight-imperial {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.calc {
+    margin: 2rem 0;
+    display: flex;
+
+}
+
+button {
+    width: 200px;
+    border-radius: 24px;
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 1.25rem;
+
+}
+
+.reset {
+    background-color: var(--transaparent);
+    border: 1px solid var(--btnColor);
+    margin-left: 5px;
+
+    &:hover {
+        background-color: var(--btnColorHoverWhite);
+    }
+}
+
+.metric-calc-btn {
+    background-color: var(--btnColor);
+    border: 1px solid var(--transaparent);
+    margin-left: 25px;
+
+        &:hover {
+        background-color: var(--btnColorHover);
+    }
+}
+
+.imperial-do-calc-btn {
+    display: none;
+    width: 150px;
+    background-color: var(--btnColor);
+    border-radius: 24px;
+    padding: 9px 12px;
+    border: 1px solid var(--transaparent);
+    cursor: pointer;
+    margin-left: 25px;
+
+        &:hover {
+        background-color: var(--btnColorHover);
+    }
+}
+
+.result h2 {
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.large-h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.large-p {
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+
+.metric-span {
+    flex: 1;
+}
+
+
+
+.metric-span label {
+    padding-left: 0.5rem;
+}
+
+.imperial-span {
+    flex: 1;
+}
+
+.imperial-span label {
+    padding-left: 0.5rem;
+}
+
+
+input.number {
+      font-size: 1rem;
+      border-radius: 0.375rem;
+      padding: 0.625rem 1rem;
+      color: var(--placeHolder);
+      border-color: var(--border);
+      border-width: 1px;
+      border-style: solid;
+      font-weight: 500;
+
+      &:focus {
+      background-color: var(--inputBg);
+
+      }
+}
+
+#hideImperial {
+    display: none;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+/* BMI Card Section Finish */
+.center {
+    text-align: center;
+}
+
+.okay-bmi {
+    display: none;
+}
+
+.low-bmi {
+    display: none;
+}
+
+.high-bmi {
+    display: none;
+}
+
+
+h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+h2 {
+    margin-bottom: 0.75rem;
+    font-size: 2.5rem;
+
+}
+
+h3 {
+    margin-bottom: 0.75rem;
+}
+
+p {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+}
+
+div.units label {
+    font-size: 1.1rem;
+}
+
+.bottom {
+    margin-bottom: 1rem;
+}
+
+.top {
+    margin-top: 2.5rem;
+}
+
+.padding-radius {
+padding: 1rem;
+border-radius: 0.5rem;
+}
+
+.result {
+    background-color: var(--resultsBg);
+    padding: 0.5rem;
+    border-radius: 0 2rem 2rem 0;
+}
+
+.result a {
+    color: var(--btnColor);
+}
+
+.results-meaning {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+
+.weight-ranges {
+    display: none;
+    color: var(--white);
+    
+    p {
+        font-size: 1rem;
+    }
+
+}
+
+
+
+.meaning-img {
+    position: relative;
+    flex: 1;
+    margin-top: 1rem;
+
+}
+
+.meaning-text {
+    flex: 1;
+
+}
+
+section {
+    padding: 2rem 0;
+}
+
+/* Resources Start */
+
+.resources {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.resource-patient-info {
+    display: flex;
+
+}
+
+.resource-bhf {
+    display: flex;
+
+}
+
+.resource-nhs {
+    display: flex;
+
+}
+
+.resource-text {
+    flex: 1;
+
+}
+
+
+.resources-section{
+    margin-bottom: 2rem;
+
+}
+
+
+
+
+/* Resources End */
+
+
+
+
+
+/* CSS for screens below or equal to 600px wide - mobiles in mind */
+@media (max-width: 600px) {
+
+    
+ul {
+    margin-left: 20px;
+    font-size: 1rem;
+    li {
+        padding: 0.5rem 0;
+    }
+
+}
+
+
+header {
+    margin-top: 2rem;
+  
+}
+
+/* BMI Card Section Start */
+
+.bmi-card{
+    max-width: 500px;
+    padding: 2rem 3rem;
+}
+
+/* 
+
+.height-metric {
+ flex-direction: column;
+ 
+}
+
+.weight-metric {
+    flex-direction: column;
+} */
+
+.min-w {
+  
+
+       font-size: 1rem;
+    }
+
+.units {
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    justify-content: center;
+    align-content: center;
+   
+    
+}
+
+
+.calc {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+}
+
+button {
+    width: 100%;
+    font-size: 1rem;
+
+}
+
+.reset {
+    order: 2;
+    margin-left: 0px;
+
+}
+
+.metric-calc-btn {
+    order: 1;
+    margin-left: 0px;
+
+}
+
+.imperial-do-calc-btn {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.result h2 {
+    font-size: 1.5rem;
+
+}
+
+.large-h3 {
+    font-size: 1.25rem;
+
+}
+
+.large-p {
+    font-size: 1.1rem;
+
+}
+
+
+.metric-span label {
+    padding-left: 0rem;
+}
+
+
+.imperial-span label {
+    padding-left: 0rem;
+}
+
+
+/* BMI Card Section Finish */
+/* 
+h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+
+}
+
+h3 {
+    margin-bottom: 0.75rem;
+}
+
+p {
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+div.units label {
+    font-size: 1rem;
+} */
+
+
+
+
+/* Resources Start */
+/* 
+.resources {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.resource-patient-info {
+    display: flex;
+
+}
+
+.resource-bhf {
+    display: flex;
+
+}
+
+.resource-nhs {
+    display: flex;
+
+}
+
+.resource-text {
+    flex: 1;
+
+}
+
+
+.resources-section{
+    margin-bottom: 2rem;
+
+}
+ */
+
+
+}
