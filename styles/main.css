@@ -31,7 +31,11 @@ body {
     color: var(--textColor);
     background: var(--bodyBg);
     
-    
+}
+
+input.number:focus {
+  background-color: var(--inputBg);
+  outline: 2px solid var(--btnColor); 
 }
 
 ul {
@@ -188,7 +192,6 @@ button {
 
 .imperial-do-calc-btn {
     display: none;
-    width: 150px;
     background-color: var(--btnColor);
     border-radius: 24px;
     padding: 9px 12px;
@@ -341,8 +344,8 @@ border-radius: 0.5rem;
 
 .results-meaning {
     display: flex;
-    flex-direction: column;
     gap: 2rem;
+    align-items: center;
 
 }
 
@@ -415,6 +418,12 @@ section {
 /* Resources End */
 
 
+/* CSS for screens below or equal to 600px wide - mobiles in mind */
+
+@media (min-width: 801px) and (max-width: 999px) {
+
+
+}
 
 
 
@@ -441,19 +450,23 @@ header {
 
 .bmi-card{
     max-width: 500px;
-    padding: 2rem 3rem;
+    padding: 2rem 1rem;
+   
 }
 
-/* 
 
-.height-metric {
+/* start fixing colum */
+ .height-metric {
  flex-direction: column;
+  align-items: flex-start;
  
 }
 
 .weight-metric {
     flex-direction: column;
-} */
+    align-items: flex-start;
+} 
+ /* end fixing column */
 
 .min-w {
   
@@ -461,20 +474,20 @@ header {
        font-size: 1rem;
     }
 
-.units {
+/* .units {
     gap: 0.5rem;
     margin: 0.5rem 0;
     justify-content: center;
     align-content: center;
    
     
-}
+} */
 
 
 .calc {
     flex-direction: column;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;
 
 }
 
@@ -487,17 +500,19 @@ button {
 .reset {
     order: 2;
     margin-left: 0px;
+    width: 200px;
 
 }
 
 .metric-calc-btn {
     order: 1;
     margin-left: 0px;
+    width: 200px;
 
 }
 
 .imperial-do-calc-btn {
-    width: 100%;
+    width: 200px;
     margin-left: 0px;
 }
 
@@ -507,12 +522,12 @@ button {
 }
 
 .large-h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 
 }
 
 .large-p {
-    font-size: 1.1rem;
+    font-size: 1rem;
 
 }
 
@@ -528,11 +543,11 @@ button {
 
 
 /* BMI Card Section Finish */
-/* 
+
 h1 {
     margin-bottom: 1rem;
     font-size: 2rem;
-}
+} 
 
 h2 {
     font-size: 1.75rem;
@@ -550,46 +565,12 @@ p {
 
 div.units label {
     font-size: 1rem;
-} */
+} 
 
 
-
-
-/* Resources Start */
-/* 
-.resources {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    
+.bottom {
+    margin-bottom: 0.5rem;
 }
-
-.resource-patient-info {
-    display: flex;
-
-}
-
-.resource-bhf {
-    display: flex;
-
-}
-
-.resource-nhs {
-    display: flex;
-
-}
-
-.resource-text {
-    flex: 1;
-
-}
-
-
-.resources-section{
-    margin-bottom: 2rem;
-
-}
- */
 
 
 }
